@@ -6,7 +6,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    response = requests.get('https://75jwlvujpd.execute-api.us-east-2.amazonaws.com/staging/expeditions')
+    response = requests.get('https://75jwlvujpd.execute-api.us-east-2.amazonaws.com/staging/expeditions/explore')
     expedition = eval(response.text)
-    message = "Sam dice que vayas a x: {}, y:{} el deposito es tiene este tamano:{}".format(expedition['x'], expedition['y'], expedition['tamano'])
-    return "<p>Hola, {}</p>".format(message)
+#    message = "Sam dice que vayas a x: {}, y:{} el deposito es tiene este tamano:{}".format(expedition['x'], expedition['y'], expedition['tamano'])
+ 
+    return "<p>Hola, {}</p>".format(expedition)
+
+
+if __name__ == '__main__':
+    app.run()
